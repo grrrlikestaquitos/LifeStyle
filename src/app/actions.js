@@ -2,6 +2,6 @@ import * as t from './actionTypes';
 
 export const login = () => ({ type: t.LOG_IN });
 
-export const sightedBeacon = (beaconSN) => ({ type: t.SIGHTED_BEACON, payload: beaconSN });
+export const addNewBeacon = (beacon) => ({ type: t.ADD_NEW_BEACON, payload: beacon });
 
-export const departedBeacon = (beaconSN) => ({ type: t.DEPARTED_BEACON, payload: beaconSN });
+export const removeBeacon = (beacon) => ({ type: t.REMOVE_BEACON, payload: beacon})
