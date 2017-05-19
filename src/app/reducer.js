@@ -2,7 +2,7 @@ import * as t from './actionTypes';
 
 export const initialState = {
     loggedIn: false,
-    beacons: []
+    beaconList: []
 };
 
 export default (state = initialState, action) => {
@@ -11,11 +11,11 @@ export default (state = initialState, action) => {
       case t.LOG_IN:
         return { ...state, loggedIn: true }
 
-      case t.SIGHTED_BEACON:
-        return { ...state, beacons: [action.payload].concat(state.beacons) }
+      case t.ADD_NEW_BEACON:
+        return { ...state, beaconList: state.beaconList.concat([action.payload])}
 
-      case t.DEPARTED_BEACON:
-        return { ...state }
+      case t.REMOVE_BEACON: 
+        return { ...state, beaconList: state.beaconList.filter(beacon => beacon !== action.payload)}
         
       default:
         return state;
