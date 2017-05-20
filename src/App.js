@@ -37,10 +37,6 @@ class App extends Component {
 
     }
 
-    componentWillReceiveProps(nextProps) {
-        // console.log('Beacon List was updated: '+nextProps.app.beaconList);
-    }
-
     checkNativeArray(event) {
         const { actions, app } = this.props;
         const { beaconList } = app;
@@ -52,11 +48,20 @@ class App extends Component {
                 if (event.length > beaconList.length) {
                     //A new beacon(s) was introduced - scenario
                     //if nativeEvent has more than beaconList
-                    const difference = (event.length-beaconList.length);
-                    console.log('Event array has '+(difference)+' more element(s) than beacon List');
-                    for (i = beaconList.length; i < event.length; i++) {
-                        actions.addNewBeacon(event[i]);
+
+                    for (i = 0; i < event.length; i++) {
+                        const beacon = event[i];
+                        if (!(beaconList.includes(beacon))) {
+                            action.addNewBeacon(beacon);
+                        }
                     }
+
+                    /* Legacy Code - does the same task, but could introduce bugs on some edge cases */
+                        /*const difference = (event.length-beaconList.length);
+                        console.log('Event array has '+(difference)+' more element(s) than beacon List');
+                        for (i = beaconList.length; i < event.length; i++) {
+                            actions.addNewBeacon(event[i]);
+                    }*/
                 } else if (event.length < beaconList.length) {
                     //An existing beacon has been removed
                     for (i = 0; i < beaconList.length; i++) {
@@ -67,6 +72,19 @@ class App extends Component {
                         }
                     }
                 }
+            } else if (event.length === beaconList.length) {
+                //Run a security check in case beacons were swapped out and replaced within the time frame
+                for (i = 0; i < event.length; i++) {
+                    const eventBeacon = event[i];
+                    const propsBeacon = beaconList[i];
+                    if (!(beaconList.includes(eventBeacon))) {
+                        actions.addNewBeacon(eventBeacon);
+                    }
+                    if (!(event.includes(propsBeacon))) {
+                        actions.removeBeacon(propsBeacon);
+                    }
+                }
+
             } else {
                 //First time sighted a beacon
                 for (i = 0; i < event.length; i++) {
