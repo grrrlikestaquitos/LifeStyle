@@ -42,14 +42,17 @@ class App extends Component {
         const { beaconList } = app;
         console.log('Check native array method: '+event);
         console.log('Props array: '+beaconList);
+
+        const eventLength = event.length;
+        const beaconListLength = beaconList.length;
         
-        if (event.length > 0) {
-            if ((event.length > 0) && (beaconList.length > 0)) {
-                if (event.length > beaconList.length) {
+        if (eventLength > 0) {
+            if ((eventLength > 0) && (beaconListLength > 0)) {
+                if (eventLength > beaconListLength) {
                     //A new beacon(s) was introduced - scenario
                     //if nativeEvent has more than beaconList
 
-                    for (i = 0; i < event.length; i++) {
+                    for (i = 0; i < eventLength; i++) {
                         const beacon = event[i];
                         if (!(beaconList.includes(beacon))) {
                             action.addNewBeacon(beacon);
@@ -62,19 +65,18 @@ class App extends Component {
                         for (i = beaconList.length; i < event.length; i++) {
                             actions.addNewBeacon(event[i]);
                     }*/
-                } else if (event.length < beaconList.length) {
+                } else if (eventLength < beaconListLength) {
                     //An existing beacon has been removed
-                    for (i = 0; i < beaconList.length; i++) {
+                    for (i = 0; i < beaconListLength; i++) {
                         const beacon = beaconList[i];
                         if (!(event.includes(beacon))) {
-                            console.log('Removing beacon: '+beacon);
                             actions.removeBeacon(beacon);
                         }
                     }
                 }
-            } else if (event.length === beaconList.length) {
+            } else if (eventLength === beaconListLength) {
                 //Run a security check in case beacons were swapped out and replaced within the time frame
-                for (i = 0; i < event.length; i++) {
+                for (i = 0; i < eventLength; i++) {
                     const eventBeacon = event[i];
                     const propsBeacon = beaconList[i];
                     if (!(beaconList.includes(eventBeacon))) {
@@ -84,22 +86,20 @@ class App extends Component {
                         actions.removeBeacon(propsBeacon);
                     }
                 }
-
             } else {
                 //First time sighted a beacon
-                for (i = 0; i < event.length; i++) {
+                for (i = 0; i < eventLength; i++) {
                     console.log(`Added beacon ${event[i]} into the beaconList array`);
                     actions.addNewBeacon(event[i]);
                 }
             }
-        } else if (event.length === 0) {
-            console.log('Event is empty');
-            for (i = 0; i < beaconList.length; i++) {
+        } else if (eventLength === 0) {
+            //Remove all beacons because the event is empty
+            for (i = 0; i < beaconListLength; i++) {
                 const beacon = beaconList[i];
                 actions.removeBeacon(beacon);
             }
         }
-
     }
 
     componentDidMount() {
