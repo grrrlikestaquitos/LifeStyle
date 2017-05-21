@@ -1,6 +1,6 @@
 //
 //  BeaconManager.m
-//  Birthday
+//  LifeStyle
 //
 //  Created by Andrei Villasana on 5/16/17.
 //  Copyright © 2017 Facebook. All rights reserved.

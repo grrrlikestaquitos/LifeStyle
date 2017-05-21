@@ -10,8 +10,8 @@ import APP from './app';
 
 const { COLORS } = APP;
 
-const createBirthdayStore = applyMiddleware(thunk)(createStore);
-const store = autoRehydrate()(createBirthdayStore)(rootReducer);
+const createLifeStyleStore = applyMiddleware(thunk)(createStore);
+const store = autoRehydrate()(createLifeStyleStore)(rootReducer);
 
 const persistConfig = {
   storage: AsyncStorage,
