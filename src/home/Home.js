@@ -8,52 +8,57 @@ import {
 } from 'react-native';
 import APP from '../app';
 
-const { COLORS, AntroText } = APP;
+const { COLORS, BEACON_LOC_ID, AntroText } = APP;
 const { width } = Dimensions.get('window');
 
 const propTypes = {
     app: PropTypes.object.isRequired
 };
 
+
+const arr = [0, 1, 2, 3];
+
 class Home extends Component {
     constructor() {
         super();
 
-        this.state = {
-            fadeAnim1: new Animated.Value(0),
-            fadeAnim2: new Animated.Value(0),
-            fadeAnim3: new Animated.Value(0)
-        };
+        this.animatedValue = [];
+        arr.forEach((value) => {
+            this.animatedValue[value] = new Animated.Value(0);
+        });
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.app.loggedIn !== this.props.app.loggedIn) {
-            setTimeout( () =>
-                Animated.timing(
-                    this.state.fadeAnim1,
+    renderIntroduction() {
+        if ((this.animatedValue.length > 1) && (this.props.app.loggedIn === true)) {
+            const animations = arr.map((item) => {
+                return Animated.timing(
+                    this.animatedValue[item],
                     {
-                        toValue: 1
+                        toValue: 1,
+                        duration: 1500 * item
                     }
-                ).start(),
-                700
-            );
-            setTimeout( () =>
-                Animated.timing(
-                    this.state.fadeAnim2,
-                    {
-                        toValue: 1
-                    }
-                ).start(),
-                1700
-            );
-            setTimeout( () =>
-                Animated.timing(
-                    this.state.fadeAnim3,
-                    {
-                        toValue: 1
-                    }
-                ).start(),
-                2500
+                )
+            });
+
+            Animated.stagger(20, animations).start();
+
+            return (
+                <View>
+                    <View style={{flexDirection: 'row', marginTop: 80, justifyContent: 'center' }}>
+                        <Animated.View style={{opacity: this.animatedValue[0], right: -15}}>
+                            <AntroText style={[styles.text, {width: ((width/2)-10)}]}>You are beautiful,</AntroText>
+                        </Animated.View>
+                        <Animated.View style={{opacity: this.animatedValue[1]}}>
+                            <AntroText style={[styles.text, {width: ((width/2)-10)}]}>you are wonderful</AntroText>
+                        </Animated.View>
+                    </View>
+                    <Animated.View style={{opacity: this.animatedValue[2]}}>
+                        <AntroText style={styles.text}>you are extravagant;</AntroText>
+                    </Animated.View>
+                    <Animated.View style={{opacity: this.animatedValue[3]}}>
+                        <AntroText style={styles.text}>you are love.</AntroText>
+                    </Animated.View>
+                </View>
             );
         }
     }
@@ -62,18 +67,7 @@ class Home extends Component {
         console.log('Home renders');
         return(
             <View style={styles.container}>
-                <View style={{flexDirection: 'row', marginTop: 80, justifyContent: 'center' }}>
-                    <Animated.View style={{opacity: this.state.fadeAnim1, right: -15}}>
-                        <AntroText style={[styles.text, {width: ((width/2)-10)}]}>You are beautiful,</AntroText>
-                    </Animated.View>
-                    <Animated.View style={{opacity: this.state.fadeAnim2}}>
-                        <AntroText style={[styles.text, {width: ((width/2)-10)}]}>you are wonderful</AntroText>
-                    </Animated.View>
-                </View>
-                <Animated.View style={{opacity: this.state.fadeAnim3}}>
-                        <AntroText style={styles.text}>you are extravagant.</AntroText>
-                </Animated.View>
-                
+                {this.renderIntroduction()}
             </View>
         );
     }
