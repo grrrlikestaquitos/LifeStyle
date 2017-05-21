@@ -55,7 +55,7 @@ class App extends Component {
                     for (i = 0; i < eventLength; i++) {
                         const beacon = event[i];
                         if (!(beaconList.includes(beacon))) {
-                            action.addNewBeacon(beacon);
+                            actions.addNewBeacon(beacon);
                         }
                     }
 
