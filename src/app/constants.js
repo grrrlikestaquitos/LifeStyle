@@ -17,6 +17,7 @@ export const INSPIRATIONAL_QUOTES = {
         'Put your heart, mind, and soul into even your smallest acts. This is the secret of success.',
         'Happiness is not something you postpone for the future; it is something you design for the present.',
         'Believe you can and you\'re halfway there.',
-        'As we express our gratitude, we must never forget that the highest appreciation is not to utter words, but to live by them.'
+        'As we express our gratitude, we must never forget that the highest appreciation is not to utter words, but to live by them.',
+        'You are beautiful, you are wonderful, you are extravagant, you are loved.'
     ]
 }
