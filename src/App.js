@@ -131,6 +131,9 @@ class App extends Component {
                     initialRouteStack={ROUTE_STACK}
                     renderScene={(route, navigator) => {
                         if (route.position === 'right') {
+                            if (this.props.app.loggedIn === false) {
+                                this.props.actions.login();
+                            }
                             return (<Home/>);
                         }
                         return(<Welcome navigator={navigator}/> );
