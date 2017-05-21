@@ -3,12 +3,15 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
     View,
-    TouchableHighlight
+    TouchableHighlight,
+    Animated
 } from 'react-native';
 import APP from '../app';
 
 const { COLORS, INSPIRATIONAL_QUOTES, AntroText, actions } = APP;
 const { welcome } = INSPIRATIONAL_QUOTES;
+
+const arr = [0, 1, 2];
 
 const propTypes = {
     navigator: PropTypes.object.isRequired,
@@ -21,6 +24,10 @@ class Welcome extends Component {
     constructor(props) {
         super(props);
 
+        this.animatedValue = [];
+        arr.forEach((value) => {
+            this.animatedValue[value] = new Animated.Value(0);
+        });
     }
 
     shouldComponentUpdate() {
@@ -41,6 +48,30 @@ class Welcome extends Component {
     }
 
     render() {
+        const animations = arr.map((item) => {
+            if (item === 2) {
+                return Animated.timing(
+                        this.animatedValue[item],
+                        {
+                            toValue: 1,
+                            duration: 1000 * item,
+                            delay: 2500
+                        }
+                    )
+            }
+
+            return (Animated.timing(
+                    this.animatedValue[item],
+                    {
+                        toValue: 1,
+                        duration: 1300,
+                        delay: 700 * item
+                    }
+                )
+            )
+        });
+
+        Animated.stagger(20, animations).start();
         console.log('Welcome rendered');
         return(
             <TouchableHighlight 
@@ -49,10 +80,16 @@ class Welcome extends Component {
                 underlayColor={COLORS.transparent}>
                 <View style={{flex: 1}}>
                     <View style={{alignItems: 'center'}}>
-                        <AntroText style={{marginTop: 70, fontSize: 40}}>LifeStyle</AntroText>
-                        <AntroText style={{marginTop: 65, fontSize: 30, marginHorizontal: 35, textAlign: 'center'}}>{this.getRandomQuote()}</AntroText>
+                        <Animated.View style={{opacity: this.animatedValue[0], marginTop: 70}}>
+                            <AntroText style={{fontSize: 40}}>LifeStyle</AntroText>
+                        </Animated.View>
+                        <Animated.View style={{opacity: this.animatedValue[1], marginTop: 65, marginHorizontal: 35}}>
+                            <AntroText style={{fontSize: 24, textAlign: 'center'}}>"{this.getRandomQuote()}"</AntroText>
+                        </Animated.View>
                     </View>
-                    <AntroText style={{position: 'absolute', left: 0, right: 0, bottom: 20, fontSize: 20, alignSelf: 'center', textAlign: 'center'}}>Press Anywhere To Continue</AntroText>
+                    <Animated.View style={{opacity: this.animatedValue[2], position: 'absolute', left: 0, right: 0, bottom: 20}}>
+                        <AntroText style={{fontSize: 20, alignSelf: 'center', textAlign: 'center'}}>Press anywhere to continue</AntroText>
+                    </Animated.View>
                 </View>
             </TouchableHighlight>
         );
