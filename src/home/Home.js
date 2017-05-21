@@ -40,7 +40,7 @@ class Home extends Component {
                 )
             });
 
-            Animated.stagger(20, animations).start();
+            Animated.stagger(35, animations).start();
 
             return (
                 <View>
