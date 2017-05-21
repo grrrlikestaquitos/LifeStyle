@@ -40,8 +40,8 @@ class App extends Component {
     checkNativeArray(event) {
         const { actions, app } = this.props;
         const { beaconList } = app;
-        console.log('Check native array method: '+event);
-        console.log('Props array: '+beaconList);
+        console.log('Check native array method: ' + event);
+        console.log('Props array: ' + beaconList);
 
         const eventLength = event.length;
         const beaconListLength = beaconList.length;
@@ -89,7 +89,6 @@ class App extends Component {
             } else {
                 //First time sighted a beacon
                 for (i = 0; i < eventLength; i++) {
-                    console.log(`Added beacon ${event[i]} into the beaconList array`);
                     actions.addNewBeacon(event[i]);
                 }
             }
@@ -113,7 +112,7 @@ class App extends Component {
                     this.checkNativeArray(event);
                 }
             }),
-            10000
+            7000
         );
     }
 
