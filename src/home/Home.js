@@ -16,11 +16,11 @@ const propTypes = {
 };
 
 
-const arr = [0, 1, 2, 3];
+const arr = [0, 1, 2, 3, 4];
 
 class Home extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.animatedValue = [];
         arr.forEach((value) => {
@@ -28,46 +28,30 @@ class Home extends Component {
         });
     }
 
-    renderIntroduction() {
-        if ((this.animatedValue.length > 1) && (this.props.app.loggedIn === true)) {
+    initAnimation() {
+        if(this.props.app.loggedIn === true) {
             const animations = arr.map((item) => {
                 return Animated.timing(
                     this.animatedValue[item],
                     {
                         toValue: 1,
-                        duration: 1500 * item
+                        duration: 3200,
+                        delay: 400
                     }
                 )
             });
-
-            Animated.stagger(35, animations).start();
-
-            return (
-                <View>
-                    <View style={{flexDirection: 'row', marginTop: 80, justifyContent: 'center' }}>
-                        <Animated.View style={{opacity: this.animatedValue[0], right: -15}}>
-                            <AntroText style={[styles.text, {width: ((width/2)-10)}]}>You are beautiful,</AntroText>
-                        </Animated.View>
-                        <Animated.View style={{opacity: this.animatedValue[1]}}>
-                            <AntroText style={[styles.text, {width: ((width/2)-10)}]}>you are wonderful</AntroText>
-                        </Animated.View>
-                    </View>
-                    <Animated.View style={{opacity: this.animatedValue[2]}}>
-                        <AntroText style={styles.text}>you are extravagant;</AntroText>
-                    </Animated.View>
-                    <Animated.View style={{opacity: this.animatedValue[3]}}>
-                        <AntroText style={styles.text}>you are love.</AntroText>
-                    </Animated.View>
-                </View>
-            );
+            Animated.stagger(20, animations).start();
         }
     }
     
     render() {
         console.log('Home renders');
+        this.initAnimation();
         return(
             <View style={styles.container}>
-                {this.renderIntroduction()}
+                <Animated.View style={{opacity: this.animatedValue[0], marginTop: 60, marginHorizontal: 25 }}>
+                    <AntroText style={styles.text2}>Using Sensoro beacons, LifeStyle will deliver a personalized message for you based on your current location. - Colourhood</AntroText>
+                </Animated.View>
             </View>
         );
     }
@@ -90,5 +74,9 @@ const styles = StyleSheet.create({
         fontSize: 22,
         textAlign: 'center',
         marginVertical: 3
+    },
+    text2: {
+        fontSize: 17,
+        textAlign: 'center'
     }
 });
