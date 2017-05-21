@@ -7,7 +7,8 @@ import {
 } from 'react-native';
 import APP from '../app';
 
-const { COLORS, AntroText, actions } = APP;
+const { COLORS, INSPIRATIONAL_QUOTES, AntroText, actions } = APP;
+const { welcome } = INSPIRATIONAL_QUOTES;
 
 const propTypes = {
     navigator: PropTypes.object.isRequired,
@@ -33,6 +34,12 @@ class Welcome extends Component {
         this.props.navigator.jumpForward();
     }
 
+    getRandomQuote() {
+        const randomnumber = Math.floor(Math.random() * (welcome.length));
+        console.log('randomNumber'+randomnumber);
+        return (welcome[randomnumber]);
+    }
+
     render() {
         console.log('Welcome rendered');
         return(
@@ -42,10 +49,8 @@ class Welcome extends Component {
                 underlayColor={COLORS.transparent}>
                 <View style={{flex: 1}}>
                     <View style={{alignItems: 'center'}}>
-                        <AntroText style={{marginTop: 70, fontSize: 36}}>Happy Birthday!!</AntroText>
-                        <AntroText style={{marginTop: 65, fontSize: 30, marginHorizontal: 35, textAlign: 'center'}}>
-                            There are two great days in a person's life - the day we are born and the day we discover why.
-                        </AntroText>
+                        <AntroText style={{marginTop: 70, fontSize: 40}}>LifeStyle</AntroText>
+                        <AntroText style={{marginTop: 65, fontSize: 30, marginHorizontal: 35, textAlign: 'center'}}>{this.getRandomQuote()}</AntroText>
                     </View>
                     <AntroText style={{position: 'absolute', left: 0, right: 0, bottom: 20, fontSize: 20, alignSelf: 'center', textAlign: 'center'}}>Press Anywhere To Continue</AntroText>
                 </View>
