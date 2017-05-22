@@ -13,7 +13,7 @@ import app from './app';
 
 const { Welcome } = welcome;
 const { Home } = home;
-const { COLORS, AnimatedHearts, actions } = app;
+const { COLORS, AnimatedHearts, SplashScreen, actions } = app;
 
 const { width, height } = Dimensions.get('window');
 
@@ -124,6 +124,7 @@ class App extends Component {
         return(
             <View style={{ flex: 1, marginTop: 20 }}>
                 <AnimatedHearts />
+                <SplashScreen />
                 <Navigator
                     ref={(navigator) => { this.navigator = navigator; }}
                     configureScene={() => ({...Navigator.SceneConfigs.HorizontalSwipeJump})}
