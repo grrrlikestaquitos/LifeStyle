@@ -3,40 +3,23 @@ import {
     Image,
     View,
     Animated,
+    Easing,
     Dimensions
 } from 'react-native';
+import { SPLASH_IMAGES } from '../constants';
 
 const { width, height } = Dimensions.get('window');
-
-const SPLASH_IMAGES = [
-    require('../../../images/splashscreen/watercolorbird.png'),
-    require('../../../images/splashscreen/watercolorbundleflowers.png'),
-    require('../../../images/splashscreen/watercolorflower.jpeg'),
-    require('../../../images/splashscreen/watercolorheart.png'),
-    require('../../../images/splashscreen/watercolorhummingbird.png'),
-    require('../../../images/splashscreen/watercolorlandscape.jpeg'),
-    require('../../../images/splashscreen/watercolorraindrops.jpg'),
-    require('../../../images/splashscreen/watercolorrose.png'),
-    require('../../../images/splashscreen/watercolorsplash.png'),
-    require('../../../images/splashscreen/watercolorsplash1.jpg'),
-    require('../../../images/splashscreen/watercolorflower2.jpeg'),
-    require('../../../images/splashscreen/watercolorleaf.jpeg'),
-    require('../../../images/splashscreen/watercolororangebird.jpeg'),
-    require('../../../images/splashscreen/watercolorfox.jpeg'),
-    require('../../../images/splashscreen/watercolorseattle.jpeg')
-];
 
 class SplashScreen extends Component {
     constructor() {
         super();
 
+        this.viewAnimation = new Animated.Value(0);
         this.watercolorImage = [];
         SPLASH_IMAGES.forEach((imageSource, index, array) => {
-            this.watercolorImage[index] = <Image
-                                        style={{opacity: 0.35, width: width, height: height-50, position: 'absolute', top: 0}}
-                                        source={imageSource}
-                                        resizeMode='contain'/>
+            this.watercolorImage[index] = <Image style={{width: width, height: height-50, position: 'absolute', top: 0}} source={imageSource} resizeMode='contain'/>
         });
+
         this.state = {
             imageCount: 0
         };
@@ -45,24 +28,25 @@ class SplashScreen extends Component {
     componentDidMount() {
       setInterval( () => {
             if (parseInt(this.state.imageCount) === (this.watercolorImage.length-1)) {
-                this.setState({
-                    imageCount: 0
-                })
+                this.setState({ imageCount: 0 })
             } else {
-
-                this.setState({
-                    imageCount: (parseInt(this.state.imageCount) + 1)
-                })
+                this.setState({ imageCount: (parseInt(this.state.imageCount) + 1) })
             }
         }, 15000
-      )
+      );
+
     }
 
     render() {
         console.log('SplashScreen was rendered');
-        console.log('Length of waterColor array: '+this.watercolorImage.length);
+        const opacity = this.viewAnimation.interpolate({
+            inputRange: [0, 0.5, 1],
+            outputRange: [0, 0.35, 0]
+        });
         return (
-            this.watercolorImage[this.state.imageCount]
+            <Animated.View>
+                {this.watercolorImage[this.state.imageCount]}
+            </Animated.View>
         );
     }
 }
