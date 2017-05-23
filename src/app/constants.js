@@ -20,4 +20,22 @@ export const INSPIRATIONAL_QUOTES = {
         'As we express our gratitude, we must never forget that the highest appreciation is not to utter words, but to live by them.',
         'You are beautiful, you are wonderful, you are extravagant, you are loved.'
     ]
-}
+};
+
+export const SPLASH_IMAGES = [
+    require('../../images/splashscreen/watercolorbird.png'),
+    require('../../images/splashscreen/watercolorbundleflowers.png'),
+    require('../../images/splashscreen/watercolorflower.jpeg'),
+    require('../../images/splashscreen/watercolorheart.png'),
+    require('../../images/splashscreen/watercolorhummingbird.png'),
+    require('../../images/splashscreen/watercolorlandscape.jpeg'),
+    require('../../images/splashscreen/watercolorraindrops.jpg'),
+    require('../../images/splashscreen/watercolorrose.png'),
+    require('../../images/splashscreen/watercolorsplash.png'),
+    require('../../images/splashscreen/watercolorsplash1.jpg'),
+    require('../../images/splashscreen/watercolorflower2.jpeg'),
+    require('../../images/splashscreen/watercolorleaf.jpeg'),
+    require('../../images/splashscreen/watercolororangebird.jpeg'),
+    require('../../images/splashscreen/watercolorfox.jpeg'),
+    require('../../images/splashscreen/watercolorseattle.jpeg')
+];
