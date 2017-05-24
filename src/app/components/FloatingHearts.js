@@ -14,16 +14,21 @@ class AnimatedHearts extends Component {
     super();
 
     this.state = {
-      count: 0
+      count: 0,
+      count2: 0
     };
   }
 
     componentDidMount() {
       setInterval( () => 
         this.setState({
-          count: (this.state.count+4)
-        })
-        ,550
+          count: (parseInt(this.state.count)+1)
+        }), 400
+      );
+      setInterval( () =>
+        this.setState({
+          count2: (parseInt(this.state.count2)+1)
+        }), 500
       );
     }
 
@@ -31,7 +36,7 @@ class AnimatedHearts extends Component {
       return(
         <View style={{height: height, width: width, left: 20, right: 0, bottom: 0, position: 'absolute', flexDirection: 'row'}}>
             <FloatingHearts count={this.state.count}/>
-            <FloatingHearts count={this.state.count}/>
+            <FloatingHearts count={this.state.count2}/>
         </View>
       );
     }
