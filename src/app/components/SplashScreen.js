@@ -23,9 +23,12 @@ class SplashScreen extends Component {
         this.state = {
             imageCount: 0
         };
+
+        this.animateImage();
     }
 
     componentDidMount() {
+        //Interval logic for switching image components every 15 seconds
       setInterval( () => {
             if (parseInt(this.state.imageCount) === (this.watercolorImage.length-1)) {
                 this.setState({ imageCount: 0 })
@@ -34,17 +37,36 @@ class SplashScreen extends Component {
             }
         }, 15000
       );
+    }
 
+    animateImage() {
+        //Animated Sequence
+        Animated.sequence([
+            Animated.timing(
+                this.viewAnimation,
+                {
+                    toValue: .35,
+                    duration: 8000
+                }
+            ),
+            Animated.timing(
+                this.viewAnimation,
+                {
+                    toValue: 0,
+                    duration: 7000
+                }
+            )
+        ]).start(event => {
+            if (event.finished) {
+                this.animateImage();
+            }
+        });
     }
 
     render() {
         console.log('SplashScreen was rendered');
-        const opacity = this.viewAnimation.interpolate({
-            inputRange: [0, 0.5, 1],
-            outputRange: [0, 0.35, 0]
-        });
         return (
-            <Animated.View>
+            <Animated.View style={{opacity: this.viewAnimation}}>
                 {this.watercolorImage[this.state.imageCount]}
             </Animated.View>
         );
