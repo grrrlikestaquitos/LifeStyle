@@ -46,14 +46,14 @@ class SplashScreen extends Component {
                 this.viewAnimation,
                 {
                     toValue: .35,
-                    duration: 8000
+                    duration: 10000
                 }
             ),
             Animated.timing(
                 this.viewAnimation,
                 {
                     toValue: 0,
-                    duration: 7000
+                    duration: 5000
                 }
             )
         ]).start(event => {
