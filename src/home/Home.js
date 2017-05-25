@@ -6,13 +6,15 @@ import {
     StyleSheet,
     Dimensions, Animated
 } from 'react-native';
+import NeighbouringList from './components/NeighbouringList';
 import APP from '../app';
 
 const { COLORS, BEACON_LOC_ID, AntroText } = APP;
 const { width } = Dimensions.get('window');
 
 const propTypes = {
-    app: PropTypes.object.isRequired
+    app: PropTypes.object.isRequired,
+    navigator: PropTypes.object.isRequired
 };
 
 
@@ -52,6 +54,9 @@ class Home extends Component {
                 <Animated.View style={{opacity: this.animatedValue[0], marginTop: 60, marginHorizontal: 25 }}>
                     <AntroText style={styles.text2}>Using Sensoro beacons, LifeStyle will deliver a personalized message for you based on your current location. - Colourhood</AntroText>
                 </Animated.View>
+                <NeighbouringList
+                    navigator={this.props.navigator}
+                    beaconList={this.props.app.beaconList}/>
             </View>
         );
     }
