@@ -5,11 +5,11 @@ export const COLORS = {
     transparent: 'transparent'
 };
 
-export const BEACON_LOC_ID = {
-    bathroom: '0117C53D1EEA',
-    bedroom: '0117C5350AFA',
-    office: '0117C533D7D0'
-};
+export const BEACON_LOC_ID = [
+    ['0117C53D1EEA', 'Restroom', require('../../images/icons/toothbrush.png')],
+    ['0117C5350AFA', 'Bedroom', require('../../images/icons/bedroom.png')],
+    ['0117C533D7D0', 'Vizio', require('../../images/icons/desk.png')]
+];
 
 export const INSPIRATIONAL_QUOTES = {
     welcome: [
