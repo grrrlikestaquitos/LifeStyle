@@ -58,7 +58,6 @@ class App extends Component {
                             actions.addNewBeacon(beacon);
                         }
                     }
-
                     /* Legacy Code - does the same task, but could introduce bugs on some edge cases */
                         /*const difference = (event.length-beaconList.length);
                         console.log('Event array has '+(difference)+' more element(s) than beacon List');
@@ -132,7 +131,7 @@ class App extends Component {
                     initialRouteStack={ROUTE_STACK}
                     renderScene={(route, navigator) => {
                         if (route.position === 'right') {
-                            return (<Home/>);
+                            return (<Home navigator={navigator}/>);
                         }
                         return(<Welcome navigator={navigator}/> );
                     }}/>
