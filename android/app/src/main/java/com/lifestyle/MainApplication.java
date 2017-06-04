@@ -1,4 +1,4 @@
-package com.birthday;
+package com.lifestyle;
 
 import android.app.Application;
 
