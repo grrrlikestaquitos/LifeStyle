@@ -4,7 +4,6 @@ import {
     TouchableHighlight,
     StyleSheet,
     Dimensions,
-    Animated,
     Image,
     View
 } from 'react-native';
