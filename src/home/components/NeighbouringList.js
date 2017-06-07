@@ -15,7 +15,7 @@ const { width } = Dimensions.get('window');
 
 const propTypes = {
     navigator: PropTypes.object.isRequired,
-    beaconList: PropTypes.array.isRequired
+    app: PropTypes.object.isRequired
 }
 
 class NeighbouringList extends Component {
@@ -40,7 +40,7 @@ class NeighbouringList extends Component {
     const place = rowData.location;
     const icon = rowData.icon;
 
-    if (this.props.beaconList.includes(beaconID)) {
+    if (this.props.app.beaconList.includes(beaconID)) {
       console.log('This function works as expected!');
 
       return (
@@ -63,7 +63,7 @@ class NeighbouringList extends Component {
   }
 
   renderSeparator(sectionID, rowID, adjacentRowHighlighted) {
-    if (this.props.beaconList.length > 1) {
+    if (this.props.app.beaconList.length > 1) {
       return (
         <View
           key={`${sectionID}-${rowID}`}
@@ -77,8 +77,8 @@ class NeighbouringList extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    var areSame = (this.props.beaconList.length == nextProps.beaconList.length) && this.props.beaconList.every((element, index) => {
-      return element === nextProps.beaconList[index]; 
+    var areSame = (this.props.app.beaconList.length == nextProps.app.beaconList.length) && this.props.app.beaconList.every((element, index) => {
+      return element === nextProps.app.beaconList[index]; 
     });
     if (areSame) {
      return false;

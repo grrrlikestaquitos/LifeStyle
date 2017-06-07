@@ -56,7 +56,7 @@ class Home extends Component {
                 </Animated.View>
                 <NeighbouringList
                     navigator={this.props.navigator}
-                    beaconList={this.props.app.beaconList}/>
+                    app={this.props.app}/>
             </View>
         );
     }
