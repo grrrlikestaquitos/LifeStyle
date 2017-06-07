@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux';
 import {
     View,
     StyleSheet,
-    Dimensions, Animated
+    Dimensions, 
+    Animated
 } from 'react-native';
 import NeighbouringList from './components/NeighbouringList';
 import APP from '../app';
@@ -18,7 +19,7 @@ const propTypes = {
 };
 
 
-const arr = [0, 1, 2, 3, 4];
+const arr = [0];
 
 class Home extends Component {
     constructor(props) {
@@ -51,12 +52,12 @@ class Home extends Component {
         this.initAnimation();
         return(
             <View style={styles.container}>
-                <Animated.View style={{opacity: this.animatedValue[0], marginTop: 60, marginHorizontal: 25 }}>
-                    <AntroText style={styles.text2}>Using Sensoro beacons, LifeStyle will deliver a personalized message for you based on your current location. - Colourhood</AntroText>
-                </Animated.View>
                 <NeighbouringList
                     navigator={this.props.navigator}
                     app={this.props.app}/>
+                <Animated.View style={{opacity: this.animatedValue[0], position: 'absolute', bottom: 25, right: 15, left: 15 }}>
+                    <AntroText style={styles.text2}>Using Sensoro beacons, LifeStyle will deliver a personalized message for you based on your current location.</AntroText>
+                </Animated.View>
             </View>
         );
     }
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
         marginVertical: 3
     },
     text2: {
-        fontSize: 17,
+        fontSize: 15,
         textAlign: 'center'
     }
 });
