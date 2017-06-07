@@ -2,12 +2,16 @@ import React, { Component, PropTypes } from 'react';
 import {
     ListView,
     TouchableHighlight,
+    StyleSheet,
+    Dimensions,
     Image,
     View
 } from 'react-native';
 import APP from '../../app';
 
-const { BEACON_LOC_ID, AntroText } = APP;
+const { COLORS, BEACON_LOC_ID, AntroText } = APP;
+
+const { width } = Dimensions.get('window');
 
 const propTypes = {
     navigator: PropTypes.object.isRequired,
@@ -31,25 +35,33 @@ class NeighbouringList extends Component {
   }
 
   renderRow(rowData, sectionID, rowID, highlightRow) {
-    const text = rowData.description.length > 60 ?
-      rowData.description.substring(0, 60).trim().concat('...') :
-      rowData.description;
+    console.log(`New row created ${rowData}`);
+    const beaconID = rowData.beacon;
+    const place = rowData.location;
+    const icon = rowData.icon;
 
-    return (
-      <TouchableHighlight
-        onPress={() => {
-          this.pressRow(rowID, rowData);
-          highlightRow(sectionID, rowID);
-        }}
-      >
-        <View>
-        </View>
-      </TouchableHighlight>
-    );
+    // if (this.props.beaconList.includes(beaconID)) {
+    //   console.log('This function works as expected!');
+
+      return (
+        <TouchableHighlight
+          onPress={() => {
+            this.pressRow(rowID, rowData);
+            highlightRow(sectionID, rowID);
+          }}
+          underlayColor={COLORS.transparent}
+        >
+          <View style={{height: 45, width: width-120, marginVertical: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start'}}>
+            <Image style={{height: 40, width: 40, marginRight: 35}} source={icon} resizeMode="contain"/>
+            <AntroText style={{fontSize: 22}}>{place}</AntroText>
+          </View>
+        </TouchableHighlight>
+      );
+    // }
   }
 
   renderSeparator(sectionID, rowID, adjacentRowHighlighted) {
-    if (this.props.beaconList > 1) {
+    if (BEACON_LOC_ID > 1) {
       return (
         <View
           key={`${sectionID}-${rowID}`}
@@ -62,15 +74,23 @@ class NeighbouringList extends Component {
     }
   }
 
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return false
+  // }
+
   render() {
-    const dataSource = this.dataSource.cloneWithRows(this.props.beaconList);
+    console.log('Listview did render?');
+    const dataSource = this.dataSource.cloneWithRows(BEACON_LOC_ID);
 
     return (
       <ListView
-        style={{height: 40, width: 200}}
+        style={{marginTop: 40}}
+        contentContainerStyle={{alignItems: 'center'}}
         dataSource={dataSource}
         stickyHeaderIndices={[0]}
-        renderHeader={() => <AntroText>Nearby Locations</AntroText>}
+        renderHeader={() => <AntroText style={styles.header}>Locations you are nearby</AntroText>}
+        enableEmptySections={true}
+        removeClippedSubviews={false}
         renderRow={this.renderRow}
         renderSeparator={this.renderSeparator}
         bounces={false}
@@ -80,3 +100,9 @@ class NeighbouringList extends Component {
 }
 
 export default NeighbouringList;
+
+const styles = StyleSheet.create({
+  header: {
+    height: 60,
+  }
+});
