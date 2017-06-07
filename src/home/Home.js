@@ -73,7 +73,6 @@ export default connect(mapStateToProps)(Home);
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center'
     },
     text: {
         fontSize: 22,
