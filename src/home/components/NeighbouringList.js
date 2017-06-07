@@ -40,8 +40,8 @@ class NeighbouringList extends Component {
     const place = rowData.location;
     const icon = rowData.icon;
 
-    // if (this.props.beaconList.includes(beaconID)) {
-    //   console.log('This function works as expected!');
+    if (this.props.beaconList.includes(beaconID)) {
+      console.log('This function works as expected!');
 
       return (
         <TouchableHighlight
@@ -57,11 +57,13 @@ class NeighbouringList extends Component {
           </View>
         </TouchableHighlight>
       );
-    // }
+    } else {
+      return null;
+    }
   }
 
   renderSeparator(sectionID, rowID, adjacentRowHighlighted) {
-    if (BEACON_LOC_ID > 1) {
+    if (this.props.beaconList.length > 1) {
       return (
         <View
           key={`${sectionID}-${rowID}`}
@@ -74,9 +76,16 @@ class NeighbouringList extends Component {
     }
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return false
-  // }
+  shouldComponentUpdate(nextProps, nextState) {
+    var areSame = (this.props.beaconList.length == nextProps.beaconList.length) && this.props.beaconList.every((element, index) => {
+      return element === nextProps.beaconList[index]; 
+    });
+    if (areSame) {
+     return false;
+    } else {
+      return true;
+    }
+  }
 
   render() {
     console.log('Listview did render?');
