@@ -15,7 +15,8 @@ const { width } = Dimensions.get('window');
 
 const propTypes = {
     app: PropTypes.object.isRequired,
-    navigator: PropTypes.object.isRequired
+    navigator: PropTypes.object.isRequired,
+    route: PropTypes.object.isRequired
 };
 
 
@@ -54,6 +55,7 @@ class Home extends Component {
             <View style={styles.container}>
                 <NeighbouringList
                     navigator={this.props.navigator}
+                    route={this.props.route}
                     app={this.props.app}/>
                 <Animated.View style={{opacity: this.animatedValue[0], position: 'absolute', bottom: 25, right: 15, left: 15 }}>
                     <AntroText style={styles.text2}>Using Sensoro beacons, LifeStyle will deliver a personalized message for you based on your current location.</AntroText>
