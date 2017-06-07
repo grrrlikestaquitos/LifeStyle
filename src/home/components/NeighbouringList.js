@@ -15,10 +15,9 @@ const { width } = Dimensions.get('window');
 
 const propTypes = {
     navigator: PropTypes.object.isRequired,
+    route: PropTypes.object.isRequired,
     app: PropTypes.object.isRequired
 }
-
-const arr = [0, 1, 2];
 
 class NeighbouringList extends Component {
     constructor(props) {
@@ -27,19 +26,13 @@ class NeighbouringList extends Component {
     this.renderRow = this.renderRow.bind(this);
     this.renderSeparator = this.renderSeparator.bind(this);
 
-    this.animatedValue = [];
-    arr.forEach((index) => {
-      this.animatedValue[index] = new Animated.Value(0);
-    });
-
-
     this.dataSource = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
   }
 
   pressRow(rowID, rowData) {
-    //this.props.navigator.push();
+    this.props.navigator.push(this.props.route);
   }
 
   renderRow(rowData, sectionID, rowID, highlightRow) {
@@ -95,27 +88,11 @@ class NeighbouringList extends Component {
     }
   }
 
-  initAnimation() {
-    if(this.props.app.loggedIn === true) {
-        const animations = arr.map((item) => {
-            return Animated.timing(
-                this.animatedValue[item],
-                {
-                    toValue: 1,
-                    duration: 500,
-                }
-            ).start();
-        });
-    }
-  }
-
   render() {
-    console.log('Listview did render?');
-    this.initAnimation();
     const dataSource = this.dataSource.cloneWithRows(BEACON_LOC_ID);
     return (
-      <Animated.View style={{opacity: this.animatedValue[0], marginTop: 60}}>
         <ListView
+          style={{marginTop: 65}}
           contentContainerStyle={{alignItems: 'center'}}
           dataSource={dataSource}
           stickyHeaderIndices={[0]}
@@ -126,7 +103,6 @@ class NeighbouringList extends Component {
           renderSeparator={this.renderSeparator}
           bounces={false}
         />
-      </Animated.View>
     );
   }
 }
