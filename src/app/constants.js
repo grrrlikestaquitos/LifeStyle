@@ -6,9 +6,9 @@ export const COLORS = {
 };
 
 export const BEACON_LOC_ID = [
-    { beacon: '0117C5350AFA', location: 'The bedroom', icon: require('../../images/icons/sun.png') },
+    { beacon: '0117C5350AFA', location: 'The bedroom', icon: require('../../images/icons/bed.png') },
     { beacon: '0117C53D1EEA', location: 'The ladie\'\s room', icon: require('../../images/icons/eyelid.png') },
-    { beacon: '0117C533D7D0', location: 'The Vizio workspace', icon: require('../../images/icons/laptop.png')}
+    { beacon: '0117C533D7D0', location: 'The vizio workspace', icon: require('../../images/icons/laptopcode.png')}
 ];
 
 export const INSPIRATIONAL_QUOTES = {
