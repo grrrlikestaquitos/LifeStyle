@@ -4,13 +4,13 @@ import {
     TouchableHighlight,
     StyleSheet,
     Dimensions,
+    Animated,
     Image,
     View
 } from 'react-native';
 import APP from '../../app';
 
 const { COLORS, BEACON_LOC_ID, AntroText } = APP;
-
 const { width } = Dimensions.get('window');
 
 const propTypes = {
@@ -18,12 +18,20 @@ const propTypes = {
     app: PropTypes.object.isRequired
 }
 
+const arr = [0, 1, 2];
+
 class NeighbouringList extends Component {
     constructor(props) {
     super(props);
 
     this.renderRow = this.renderRow.bind(this);
     this.renderSeparator = this.renderSeparator.bind(this);
+
+    this.animatedValue = [];
+    arr.forEach((index) => {
+      this.animatedValue[index] = new Animated.Value(0);
+    });
+
 
     this.dataSource = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
@@ -43,7 +51,7 @@ class NeighbouringList extends Component {
     if (this.props.app.beaconList.includes(beaconID)) {
       console.log('This function works as expected!');
 
-      return (
+      return ( 
         <TouchableHighlight
           onPress={() => {
             this.pressRow(rowID, rowData);
@@ -87,23 +95,38 @@ class NeighbouringList extends Component {
     }
   }
 
+  initAnimation() {
+    if(this.props.app.loggedIn === true) {
+        const animations = arr.map((item) => {
+            return Animated.timing(
+                this.animatedValue[item],
+                {
+                    toValue: 1,
+                    duration: 500,
+                }
+            ).start();
+        });
+    }
+  }
+
   render() {
     console.log('Listview did render?');
+    this.initAnimation();
     const dataSource = this.dataSource.cloneWithRows(BEACON_LOC_ID);
-
     return (
-      <ListView
-        style={{marginTop: 40}}
-        contentContainerStyle={{alignItems: 'center'}}
-        dataSource={dataSource}
-        stickyHeaderIndices={[0]}
-        renderHeader={() => <AntroText style={styles.header}>Locations you are nearby</AntroText>}
-        enableEmptySections={true}
-        removeClippedSubviews={false}
-        renderRow={this.renderRow}
-        renderSeparator={this.renderSeparator}
-        bounces={false}
-      />
+      <Animated.View style={{opacity: this.animatedValue[0], marginTop: 60}}>
+        <ListView
+          contentContainerStyle={{alignItems: 'center'}}
+          dataSource={dataSource}
+          stickyHeaderIndices={[0]}
+          renderHeader={() => <AntroText style={styles.header}>Locations you are nearby</AntroText>}
+          enableEmptySections={true}
+          removeClippedSubviews={false}
+          renderRow={this.renderRow}
+          renderSeparator={this.renderSeparator}
+          bounces={false}
+        />
+      </Animated.View>
     );
   }
 }
