@@ -13,7 +13,7 @@ import app from './app';
 
 const { Welcome } = welcome;
 const { Home } = home;
-const { COLORS, AnimatedHearts, SplashScreen, actions } = app;
+const { COLORS, AnimatedHearts, LifeStyleScene, SplashScreen, actions } = app;
 
 const { width, height } = Dimensions.get('window');
 
@@ -23,8 +23,9 @@ const propTypes = {
 };
 
 const ROUTE_STACK = [
-    { position: 'left', scene: Welcome },
-    { position: 'right', scene: Home }
+    { position: 'left', index: 0 },
+    { position: 'right', index: 1 },
+    { title: 'place', index: 2 }
 ];
 
 const INIT_ROUTE_INDEX = 0;
@@ -131,7 +132,12 @@ class App extends Component {
                     initialRouteStack={ROUTE_STACK}
                     renderScene={(route, navigator) => {
                         if (route.position === 'right') {
-                            return (<Home navigator={navigator}/>);
+                            return (<Home navigator={navigator}
+                                          route={ROUTE_STACK[2]}/>);
+                        }
+                        if (route.index === 2) {
+                            return (<LifeStyleScene navigator={navigator}>
+                                    </LifeStyleScene>);
                         }
                         return(<Welcome navigator={navigator}/> );
                     }}/>
