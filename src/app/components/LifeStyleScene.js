@@ -4,10 +4,13 @@ import {
   StyleSheet,
   TouchableHighlight,
   TouchableWithoutFeedback,
+  Dimensions,
   View
 } from 'react-native';
 import AntroText from './AntroText';
 import { COLORS } from '../constants';
+
+const { width } = Dimensions.get('window');
 
 const propTypes = {
   navigator: PropTypes.object.isRequired,
@@ -17,11 +20,28 @@ const propTypes = {
 class LifeStyleScene extends Component {
   constructor(props) {
     super(props);
+
+    this.componentArray = [];
+
+    this.renderTextArray();
+  }
+
+  renderTextArray() {
+    const array = this.props.textArray;
+    while (array.length > 0) {
+      console.log('is this function running?');
+      var sp = array.splice(0, 6);   
+      
+      const object = sp.map((value, index) => {
+                      return (value);
+                    });
+
+      this.componentArray.push(object);
+    }
   }
 
   render() {
     console.log('LifeStyle scene rendered');
-    console.log('LifeStyle scene array: ' + this.props.textArray);
     return(
       <View style={styles.container}>
           <TouchableHighlight
@@ -35,18 +55,15 @@ class LifeStyleScene extends Component {
               resizeMode="contain"
             />
           </TouchableHighlight>
-          <View style={{flex: 1, backgroundColor: COLORS.heartRed}}>
-            {this.props.textArray.map((value, index) => {
-              console.log(`Value in array: ${value}`);
-              return (
-                <AntroText 
-                  style={{height: 20, fontSize: 20}}
-                  key={index}>
-                  {value}
-                </AntroText>
-                );
-            })}
-          </View>
+          {this.componentArray.map((value, index) => {
+            return (
+              <View style={{height: 20, width: width, backgroundColor: COLORS.heartRed, flexDirection: 'row'}} key={index}>
+                {this.componentArray[index].map((value, index) => {
+                  return (<AntroText style={{fontSize: 20, height: 20}} key={index}>{value}</AntroText>);
+                })}
+              </View>
+            );
+          })}
       </View>
     );
   }
