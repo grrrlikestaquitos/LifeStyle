@@ -1,39 +1,56 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   Image,
-  ScrollView,
   StyleSheet,
   TouchableHighlight,
   TouchableWithoutFeedback,
   View
 } from 'react-native';
+import AntroText from './AntroText';
 import { COLORS } from '../constants';
 
 const propTypes = {
   navigator: PropTypes.object.isRequired,
-  children: PropTypes.any
+  textArray: PropTypes.array.isRequired
 };
 
-const LifeStyleScene = props => (
-  <View style={styles.container}>
-      <TouchableHighlight
-        style={styles.iconCont}
-        underlayColor={COLORS.transparent}
-        onPress={() => props.navigator.pop()}
-      >
-        <Image
-          style={styles.icon}
-          source={require('../../../images/icons/back.png')}
-          resizeMode="contain"
-        />
-      </TouchableHighlight>
-      <TouchableWithoutFeedback>
-        <View>
-          {props.children}
-        </View>
-      </TouchableWithoutFeedback>
-  </View>
-);
+class LifeStyleScene extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    console.log('LifeStyle scene rendered');
+    console.log('LifeStyle scene array: ' + this.props.textArray);
+    return(
+      <View style={styles.container}>
+          <TouchableHighlight
+            style={styles.iconCont}
+            underlayColor={COLORS.transparent}
+            onPress={() => this.props.navigator.pop()}
+          >
+            <Image
+              style={styles.icon}
+              source={require('../../../images/icons/back.png')}
+              resizeMode="contain"
+            />
+          </TouchableHighlight>
+          <View style={{flex: 1, backgroundColor: COLORS.heartRed}}>
+            {this.props.textArray.map((value, index) => {
+              console.log(`Value in array: ${value}`);
+              return (
+                <AntroText 
+                  style={{height: 20, fontSize: 20}}
+                  key={index}>
+                  {value}
+                </AntroText>
+                );
+            })}
+          </View>
+      </View>
+    );
+  }
+}
 
 
 const styles = StyleSheet.create({
