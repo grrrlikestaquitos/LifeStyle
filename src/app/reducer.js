@@ -1,11 +1,10 @@
 import * as t from './actionTypes';
-import * as constants from './constants';
-const { PLACE_TEXTS } = constants;
+import { PLACE_TEXTS } from './constants';
 
 export const initialState = {
     loggedIn: false,
     beaconList: [],
-    selectedPlace: null
+    selectedPlaceArray: []
 };
 
 export default (state = initialState, action) => {
@@ -23,13 +22,13 @@ export default (state = initialState, action) => {
       case t.SELECTED_PLACE: {
         switch (action.payload) {
           case 'bed':
-            return { ...state, selectedPlace: PLACE_TEXTS.bedroom };
+            return { ...state, selectedPlaceArray: PLACE_TEXTS.bedroom };
         
           case 'restroom':
-            return { ...state, selectedPlace: PLACE_TEXTS.restroom };
+            return { ...state, selectedPlaceArray: PLACE_TEXTS.restroom };
 
           case 'workspace':
-            return { ...state, selectedPlace: PLACE_TEXTS.workspace };
+            return { ...state, selectedPlaceArray: PLACE_TEXTS.workspace };
 
           default:
             break;
