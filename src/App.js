@@ -136,8 +136,8 @@ class App extends Component {
                                           route={ROUTE_STACK[2]}/>);
                         }
                         if (route.index === 2) {
-                            return (<LifeStyleScene navigator={navigator}>
-                                    </LifeStyleScene>);
+                            return (<LifeStyleScene navigator={navigator}
+                                                    textArray={this.props.app.selectedPlaceArray}/>);
                         }
                         return(<Welcome navigator={navigator}/> );
                     }}/>
