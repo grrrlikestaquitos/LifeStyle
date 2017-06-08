@@ -10,11 +10,12 @@ import {
 import NeighbouringList from './components/NeighbouringList';
 import APP from '../app';
 
-const { COLORS, BEACON_LOC_ID, AntroText } = APP;
+const { COLORS, BEACON_LOC_ID, AntroText, actions } = APP;
 const { width } = Dimensions.get('window');
 
 const propTypes = {
     app: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired,
     navigator: PropTypes.object.isRequired,
     route: PropTypes.object.isRequired
 };
@@ -56,7 +57,8 @@ class Home extends Component {
                 <NeighbouringList
                     navigator={this.props.navigator}
                     route={this.props.route}
-                    app={this.props.app}/>
+                    app={this.props.app}
+                    actions={this.props.actions}/>
                 <Animated.View style={{opacity: this.animatedValue[0], position: 'absolute', bottom: 25, right: 15, left: 15 }}>
                     <AntroText style={styles.text2}>Using Sensoro beacons, LifeStyle will deliver a personalized message for you based on your current location.</AntroText>
                 </Animated.View>
@@ -69,9 +71,13 @@ const mapStateToProps = state => ({
     app: state.app
 });
 
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(actions, dispatch)
+});
+
 Home.propTypes = propTypes;
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 const styles = StyleSheet.create({
     container: {
