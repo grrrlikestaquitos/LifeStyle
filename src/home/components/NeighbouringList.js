@@ -15,7 +15,8 @@ const { width } = Dimensions.get('window');
 const propTypes = {
     navigator: PropTypes.object.isRequired,
     route: PropTypes.object.isRequired,
-    app: PropTypes.object.isRequired
+    app: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired
 }
 
 class NeighbouringList extends Component {
@@ -32,6 +33,7 @@ class NeighbouringList extends Component {
 
   pressRow(rowID, rowData) {
     this.props.navigator.push(this.props.route);
+    this.props.actions.selectPlace(rowData.place);
   }
 
   renderRow(rowData, sectionID, rowID, highlightRow) {
@@ -40,8 +42,8 @@ class NeighbouringList extends Component {
     const place = rowData.location;
     const icon = rowData.icon;
 
-    if (this.props.app.beaconList.includes(beaconID)) {
-      console.log('This function works as expected!');
+    // if (this.props.app.beaconList.includes(beaconID)) {
+    //   console.log('This function works as expected!');
 
       return ( 
         <TouchableHighlight
@@ -57,9 +59,10 @@ class NeighbouringList extends Component {
           </View>
         </TouchableHighlight>
       );
-    } else {
-      return null;
-    }
+    //  } 
+    //  else {
+    // //   return null;
+    // // }
   }
 
   renderSeparator(sectionID, rowID, adjacentRowHighlighted) {
