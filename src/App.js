@@ -23,8 +23,8 @@ const propTypes = {
 };
 
 const ROUTE_STACK = [
-    { position: 'left', index: 0 },
-    { position: 'right', index: 1 },
+    { title: 'welcome', index: 0 },
+    { title: 'home', index: 1 },
     { title: 'place', index: 2 }
 ];
 
@@ -131,15 +131,21 @@ class App extends Component {
                     initialRoute={ROUTE_STACK[INIT_ROUTE_INDEX]}
                     initialRouteStack={ROUTE_STACK}
                     renderScene={(route, navigator) => {
-                        if (route.position === 'right') {
-                            return (<Home navigator={navigator}
-                                          route={ROUTE_STACK[2]}/>);
+                        switch (route.index) {
+                            case 0:
+                                return(<Welcome navigator={navigator}
+                                                route={ROUTE_STACK[1]}/>)
+
+                            case 1: 
+                                return (<Home navigator={navigator}
+                                              route={ROUTE_STACK[2]}/>)
+
+                            case 2:
+                                return (<LifeStyleScene navigator={navigator}
+                                                        textArray={this.props.app.selectedPlaceArray}/>);
+                        
                         }
-                        if (route.index === 2) {
-                            return (<LifeStyleScene navigator={navigator}
-                                                    textArray={this.props.app.selectedPlaceArray}/>);
-                        }
-                        return(<Welcome navigator={navigator}/> );
+                        
                     }}/>
             </View>
         );
