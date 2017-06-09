@@ -27,10 +27,11 @@ class LifeStyleScene extends Component {
   }
 
   renderTextArray() {
-    const array = this.props.textArray;
+    const array = this.props.textArray.slice();
+
     while (array.length > 0) {
       console.log('is this function running?');
-      var sp = array.splice(0, 6);   
+      var sp = array.splice(0, 4);   
       
       const object = sp.map((value, index) => {
                       return (value);
