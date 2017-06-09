@@ -23,12 +23,12 @@ class AnimatedHearts extends Component {
       setInterval( () => 
         this.setState({
           count: (parseInt(this.state.count)+1)
-        }), 400
+        }), 765
       );
       setInterval( () =>
         this.setState({
           count2: (parseInt(this.state.count2)+1)
-        }), 500
+        }), 940
       );
     }
 
