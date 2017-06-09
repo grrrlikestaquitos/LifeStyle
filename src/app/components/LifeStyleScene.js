@@ -22,7 +22,7 @@ class LifeStyleScene extends Component {
     super(props);
 
     this.componentArray = [];
-
+    
     this.renderTextArray();
   }
 
