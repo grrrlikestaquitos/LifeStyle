@@ -58,7 +58,7 @@ class LifeStyleScene extends Component {
           </TouchableHighlight>
           {this.componentArray.map((value, index) => {
             return (
-              <View style={{height: 40, width: width+50, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}} key={index}>
+              <View style={{height: 40, width: width+40, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}} key={index}>
                 {this.componentArray[index].map((value, index) => {
                   return (<AntroText style={{ color: COLORS.gray, fontSize: 22, height: 40, justifyContent: 'center'}} key={index}>{value}</AntroText>);
                 })}
@@ -73,7 +73,8 @@ class LifeStyleScene extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'space-between'
   },
   iconCont: {
     position: 'absolute',
