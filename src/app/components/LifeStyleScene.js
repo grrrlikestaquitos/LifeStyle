@@ -5,6 +5,7 @@ import {
   TouchableHighlight,
   TouchableWithoutFeedback,
   Dimensions,
+  Animated,
   View
 } from 'react-native';
 import AntroText from './AntroText';
@@ -22,7 +23,12 @@ class LifeStyleScene extends Component {
     super(props);
 
     this.componentArray = [];
+    this.animatedValue = [];
     
+    this.props.textArray.forEach((index) => {
+     this.animatedValue[index] = new Animated.value(0);
+    });
+
     this.renderTextArray();
   }
 
@@ -31,7 +37,7 @@ class LifeStyleScene extends Component {
 
     while (array.length > 0) {
       console.log('is this function running?');
-      var sp = array.splice(0, 4);   
+      var sp = array.splice(0, 5);   
       
       const object = sp.map((value, index) => {
                       return (value);
