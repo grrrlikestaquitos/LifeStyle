@@ -25,8 +25,8 @@ class LifeStyleScene extends Component {
     this.componentArray = [];
     this.animatedValue = [];
     
-    this.props.textArray.forEach((index) => {
-     this.animatedValue[index] = new Animated.value(0);
+    props.textArray.forEach((index) => {
+     this.animatedValue[index] = new Animated.Value(0);
     });
 
     this.renderTextArray();
