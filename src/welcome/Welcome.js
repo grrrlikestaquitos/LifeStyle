@@ -15,7 +15,7 @@ const arr = [0, 1, 2];
 
 const propTypes = {
     navigator: PropTypes.object.isRequired,
-    homeRoute: PropTypes.object.isRequired,
+    route: PropTypes.object.isRequired,
     app: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired
 };
@@ -38,7 +38,7 @@ class Welcome extends Component {
         if (this.props.app.loggedIn === false) {
             this.props.actions.login();
         }
-        this.props.navigator.jumpForward();
+        this.props.navigator.push(this.props.route);
     }
 
     getRandomQuote() {
