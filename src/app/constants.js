@@ -26,7 +26,12 @@ export const INSPIRATIONAL_QUOTES = {
 };
 
 export const PLACE_TEXTS = {
-    bedroom: ['love', 'unison', 'hope', 'faith', 'selflessness', 'purity', 'forgiveness', 'memento', 'good', 'morning'],
+    bedroom: ['love', 'unison', 'hope', 'faith', 'selflessness', 'purity', 'forgiveness',
+              'memento', 'good', 'sunny', 'morning', 'praise', 'willingness', 'passion', 
+              'eternity', 'the', 'elegance', 'worship', 'wellrounded', 'open minded', 'clarity', 
+              'meaning', 'compassion', 'trust', 'achievement', 'forecast', 'comprimise', 'smile',
+              'extravagance', 'eccentricity', 'sympathy', 'brightness', 'you', 'Seattle',
+              'breeze', 'rain', 'elevation', 'shine' ],
     restroom: [],
     workspace: []
 }
