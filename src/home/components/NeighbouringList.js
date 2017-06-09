@@ -32,8 +32,8 @@ class NeighbouringList extends Component {
   }
 
   pressRow(rowID, rowData) {
-    this.props.navigator.push(this.props.route);
     this.props.actions.selectPlace(rowData.place);
+    this.props.navigator.push(this.props.route);
   }
 
   renderRow(rowData, sectionID, rowID, highlightRow) {
