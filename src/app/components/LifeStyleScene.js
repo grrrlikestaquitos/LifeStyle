@@ -18,32 +18,41 @@ const propTypes = {
   textArray: PropTypes.array.isRequired
 };
 
+const ELEMENTS_PER_VIEW = 5;
+
 class LifeStyleScene extends Component {
   constructor(props) {
     super(props);
 
     this.componentArray = [];
-    this.animatedValue = [];
-    
-    props.textArray.forEach((index) => {
-     this.animatedValue[index] = new Animated.Value(0);
-    });
+    this.animatedArray = [];
 
-    this.renderTextArray();
+    this.createTextArray();
+    this.createAnimatedValues();
   }
 
-  renderTextArray() {
+  createTextArray() {
     const array = this.props.textArray.slice();
 
     while (array.length > 0) {
       console.log('is this function running?');
-      var sp = array.splice(0, 5);   
+      var sp = array.splice(0, ELEMENTS_PER_VIEW);   
       
       const object = sp.map((value, index) => {
                       return (value);
                     });
 
       this.componentArray.push(object);
+    }
+  }
+
+  createAnimatedValues() {
+    for (var i = 0; i < this.componentArray.length; i++) {
+      const object = [];
+      for (var x = 0; x < ELEMENTS_PER_VIEW; x++) {
+        object[x] = new Animated.Value(0);
+      }
+      this.animatedArray.push(object);
     }
   }
 
