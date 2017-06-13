@@ -25,10 +25,8 @@ class LifeStyleScene extends Component {
     super(props);
 
     this.componentArray = [];
-    this.animatedArray = [];
 
     this.createTextArray();
-    this.createAnimatedValues();
   }
 
   createTextArray() {
@@ -39,20 +37,13 @@ class LifeStyleScene extends Component {
       var sp = array.splice(0, ELEMENTS_PER_VIEW);   
       
       const object = sp.map((value, index) => {
-                      return (value);
+                      return ({
+                        text: value,
+                        animation: new Animated.Value(0)
+                      });
                     });
 
       this.componentArray.push(object);
-    }
-  }
-
-  createAnimatedValues() {
-    for (var i = 0; i < this.componentArray.length; i++) {
-      const object = [];
-      for (var x = 0; x < ELEMENTS_PER_VIEW; x++) {
-        object[x] = new Animated.Value(0);
-      }
-      this.animatedArray.push(object);
     }
   }
 
@@ -75,7 +66,7 @@ class LifeStyleScene extends Component {
             return (
               <View style={{height: 40, width: width+40, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}} key={index}>
                 {this.componentArray[index].map((value, index) => {
-                  return (<AntroText style={{ color: COLORS.gray, fontSize: 22, height: 40, justifyContent: 'center'}} key={index}>{value}</AntroText>);
+                  return (<AntroText style={{ color: COLORS.gray, fontSize: 22, height: 40, justifyContent: 'center'}} key={index}>{value.text}</AntroText>);
                 })}
               </View>
             );
