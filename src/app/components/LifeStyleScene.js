@@ -66,7 +66,11 @@ class LifeStyleScene extends Component {
             return (
               <View style={{height: 40, width: width+40, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}} key={index}>
                 {this.componentArray[index].map((value, index) => {
-                  return (<AntroText style={{ color: COLORS.gray, fontSize: 22, height: 40, justifyContent: 'center'}} key={index}>{value.text}</AntroText>);
+                  return (
+                    <Animated.View style={{opacity: value.animation, height: 40}} key={index}>
+                      <AntroText style={{color: COLORS.gray, fontSize: 22, justifyContent: 'center'}}>{value.text}</AntroText>
+                    </Animated.View>
+                    );
                 })}
               </View>
             );
