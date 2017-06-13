@@ -32,7 +32,10 @@ export const PLACE_TEXTS = {
               'meaning', 'compassion', 'trust', 'achievement', 'forecast', 'comprimise', 'smile',
               'extravagance', 'eccentricity', 'sympathy', 'joyful', 'brightness', 'you', 'Seattle',
               'breeze', 'rain', 'elevation', 'shine', 'courage', 'imagine', 'amaze', 'colorful',
-              'blessing', 'aspire,', 'dawn', 'brilliance', 'angelic', 'innocence', 'grace' ],
+              'blessing', 'aspire,', 'dawn', 'brilliance', 'angelic', 'innocence', 'grace', 'yoga', 
+              'strength', 'will', 'zion', 'seek', 'bright', 'beautiful', 'passionate', 'everlasting',
+              'insight', 'widsom', 'caring', 'treasure', 'time', 'is', 'run', 'dance', 'charm', 'abundance',
+              'overflow', 'swim', 'heal', 'blue', 'teal', 'tree', 'triumph', 'life', 'serenity'],
     restroom: ['shower', 'cleanse', ],
     workspace: []
 }
