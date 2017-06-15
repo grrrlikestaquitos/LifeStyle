@@ -27,7 +27,7 @@ class LifeStyleScene extends Component {
     this.componentArray = [];
 
     this.createTextArray();
-    this.linearAnimation();
+    this.zigzagAnimation();
   }
 
   createTextArray() {
@@ -48,6 +48,7 @@ class LifeStyleScene extends Component {
     }
   }
 
+  //** Animations Functions **//
   linearAnimation() {
     //Animation description: A linear animation starting from the top to the bottom
     for (var i = 0; i < this.componentArray.length; i++) {
@@ -61,6 +62,33 @@ class LifeStyleScene extends Component {
     }
   }
 
+  zigzagAnimation() {
+    //Animation description:
+    //From the top most view create a zig zag animation from left,
+    //then adjacent view create a zig zag animation from right, and so on
+    const animations = [];
+
+    for (var i = 0; i < this.componentArray.length; i++) {
+      const viewObject = this.componentArray[i];
+
+      if (i%2) { //if i is odd
+        for (var x = 0; x < viewObject.length; x++) {
+          const textObject = viewObject[x];
+
+          animations.push(Animated.timing(textObject.animation, { toValue: 1, duration: 400 }));
+        }
+      } else { //even
+        for (var z = viewObject.length-1; z > -1; z--) {
+          const textObject = viewObject[z];
+
+          animations.push(Animated.timing(textObject.animation, { toValue: 1, duration: 400 }));
+        }
+      }
+    }
+
+    Animated.stagger(75, animations).start();
+  }
+
   centerDropAnimation() {
     //Animation description:
     //Begin animating the view component that is in the middle, then
@@ -68,11 +96,6 @@ class LifeStyleScene extends Component {
     //We only want the for-loop to iterate half the length of the componentArray
   }
 
-  zigzagAnimation() {
-    //Animation description:
-    //From the top most view create a zig zag animation from left,
-    //then adjacent view create a zig zag animation from right, and so on
-  }
 
   render() {
     console.log('LifeStyle scene rendered');
