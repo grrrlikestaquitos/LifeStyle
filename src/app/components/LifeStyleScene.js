@@ -90,8 +90,6 @@ class LifeStyleScene extends Component {
   }
 
   closeInFromSidesAnimation() {
-    //Animation description:
-    //
 
     const leftAnimation = [];
     const rightAnimation = [];
