@@ -27,7 +27,7 @@ class LifeStyleScene extends Component {
     this.componentArray = [];
 
     this.createTextArray();
-    this.closeInFromSidesAnimation();
+    this.randomAnimation();
   }
 
   createTextArray() {
@@ -45,6 +45,24 @@ class LifeStyleScene extends Component {
                     });
 
       this.componentArray.push(object);
+    }
+  }
+
+  randomAnimation() {
+    const x = Math.floor(Math.random() * 3);
+    console.log('random number '+x);
+    switch (x) {
+      case 0:
+        return this.linearAnimation();
+    
+      case 1:
+        return this.closeInFromSidesAnimation();
+      
+      case 2:
+        return this.zigzagAnimation();
+
+      default:
+        return this.linearAnimation();
     }
   }
 
