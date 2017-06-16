@@ -57,17 +57,17 @@ export const PLACE_TEXTS = {
 export const SPLASH_IMAGES = [
     require('../../images/splashscreen/watercolorbird.png'),
     require('../../images/splashscreen/watercolorbundleflowers.png'),
-    require('../../images/splashscreen/watercolorflower.jpeg'),
+    require('../../images/splashscreen/watercolorflower.png'),
     require('../../images/splashscreen/watercolorheart.png'),
     require('../../images/splashscreen/watercolorhummingbird.png'),
-    require('../../images/splashscreen/watercolorlandscape.jpeg'),
-    require('../../images/splashscreen/watercolorraindrops.jpg'),
+    require('../../images/splashscreen/watercolorlandscape.png'),
+    require('../../images/splashscreen/watercolorraindrops.png'),
     require('../../images/splashscreen/watercolorrose.png'),
     require('../../images/splashscreen/watercolorsplash.png'),
-    require('../../images/splashscreen/watercolorsplash1.jpg'),
-    require('../../images/splashscreen/watercolorflower2.jpeg'),
-    require('../../images/splashscreen/watercolorleaf.jpeg'),
-    require('../../images/splashscreen/watercolororangebird.jpeg'),
-    require('../../images/splashscreen/watercolorfox.jpeg'),
-    require('../../images/splashscreen/watercolorseattle.jpeg')
+    require('../../images/splashscreen/watercolorsplash1.png'),
+    require('../../images/splashscreen/watercolorflower2.png'),
+    require('../../images/splashscreen/watercolorleaf.png'),
+    require('../../images/splashscreen/watercolororangebird.png'),
+    require('../../images/splashscreen/watercolorfox.png'),
+    require('../../images/splashscreen/watercolorseattle.png')
 ];
