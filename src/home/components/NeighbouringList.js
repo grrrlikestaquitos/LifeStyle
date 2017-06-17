@@ -42,8 +42,8 @@ class NeighbouringList extends Component {
     const place = rowData.location;
     const icon = rowData.icon;
 
-    // if (this.props.app.beaconList.includes(beaconID)) {
-    //   console.log('This function works as expected!');
+    if (this.props.app.beaconList.includes(beaconID)) {
+      console.log('This function works as expected!');
 
       return ( 
         <TouchableHighlight
@@ -59,10 +59,10 @@ class NeighbouringList extends Component {
           </View>
         </TouchableHighlight>
       );
-    //  } 
-    //  else {
-    // //   return null;
-    // // }
+     } 
+     else {
+      return null;
+    }
   }
 
   renderSeparator(sectionID, rowID, adjacentRowHighlighted) {
