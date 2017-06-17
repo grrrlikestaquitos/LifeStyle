@@ -28,16 +28,17 @@ export const INSPIRATIONAL_QUOTES = {
 export const PLACE_TEXTS = {
     bedroom: {
         text: ['love', 'unison', 'hope', 'faith', 'selflessness', 'purity', 'forgiveness',
-              'memento', 'good', 'sunny', 'morning', 'art', 'praise', 'willingness', 'passion', 
-              'eternity', 'the', 'elegance', 'worship', 'wellrounded', 'open minded', 'clarity', 
-              'meaning', 'compassion', 'trust', 'achievement', 'forecast', 'comprimise', 'smile',
-              'extravagance', 'eccentricity', 'sympathy', 'joyful', 'brightness', 'you', 'Seattle',
-              'breeze', 'rain', 'elevation', 'shine', 'courage', 'imagine', 'amaze', 'colorful',
-              'blessing', 'aspire,', 'dawn', 'brilliance', 'angelic', 'innocence', 'grace', 'yoga', 
-              'strength', 'will', 'zion', 'seek', 'bright', 'beautiful', 'passionate', 'everlasting',
-              'insight', 'widsom', 'caring', 'treasure', 'time', 'is', 'run', 'dance', 'charm', 'abundance',
+              'memento', 'respond', 'praise', 'sunny', 'art', 'good', 'morning', 'willingness',
+              'passion', 'eternity', 'katherine', 'the', 'elegance', 'worship', 'wellrounded', 'open minded', 
+              'clarity', 'meaning', 'weather', 'forecast', 'achievement', 'comprimise', 'lorem',
+              'smile', 'slight', 'breeze', 'bright', 'dawn', 'eccentricity', 'sympathy',
+              'in', 'seattle', 'joyful', 'today', 'elevation', 'shine', 'courage', 'imagine', 'amaze',
+              'you', 'look', 'angelic', 'innocence', 'grace', 'yoga', 'compassion', 'trust', 'colorful', 'blessing', 'aspire,', 
+              'strength', 'will', 'zion', 'seek', 'bright', 'beautiful', 'extravagance', 'passionate', 'everlasting',
+              'insight', 'widsom', 'caring', 'treasure', 'seek', 'time to', 'continue', 'violin', 'run', 'abundance', 'dancing,', 'charming,', 'and', 'living',
               'overflow', 'swim', 'heal', 'blue', 'teal', 'tree', 'triumph', 'life', 'serenity'],
-        keywords: ['love', 'blue', 'tree']
+        keywords: ['good', 'morning', 'katherine', 'weather', 'forecast', 'slight', 'breeze', 'in', 'seattle',
+                   'today', 'you', 'look', 'angelic', 'time to', 'continue', 'dancing,', 'charming,', 'and', 'living']
     },
     restroom: {
         text:  ['shower', 'cleanse', 'cool', 'revitalize', 'colour', 'sing', 'anything', 'pray',
