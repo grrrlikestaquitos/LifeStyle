@@ -79,7 +79,13 @@ class LifeStyleScene extends Component {
       for (var x = 0; x < viewObject.length; x++) {
         const textObject = viewObject[x];
 
-        Animated.timing(textObject.animation, { toValue: 1, duration: 2500, delay: 140*i }).start();
+        if (this.fadeToBlackTextAnimation(textObject.text)) {
+          Animated.timing(textObject.animation, { toValue: 1, duration: 10000, delay: 140*i }).start();
+          textObject.color = COLORS.black;
+        } else {
+          Animated.timing(textObject.animation, { toValue: 1, duration: 2500, delay: 140*i }).start();
+        }
+
       }
     }
   }
@@ -97,13 +103,25 @@ class LifeStyleScene extends Component {
         for (var x = 0; x < viewObject.length; x++) {
           const textObject = viewObject[x];
 
-          animations.push(Animated.timing(textObject.animation, { toValue: 1, duration: 400 }));
+          if (this.fadeToBlackTextAnimation(textObject.text)) {
+            animations.push(Animated.timing(textObject.animation, { toValue: 1, duration: 2500, delay: 1500 }));
+            textObject.color = COLORS.black;
+          } else {
+            animations.push(Animated.timing(textObject.animation, { toValue: 1, duration: 400 }));
+          }
+
         }
       } else { //even
         for (var z = viewObject.length-1; z > -1; z--) {
           const textObject = viewObject[z];
 
-          animations.push(Animated.timing(textObject.animation, { toValue: 1, duration: 400 }));
+          if (this.fadeToBlackTextAnimation(textObject.text)) {
+            animations.push(Animated.timing(textObject.animation, { toValue: 1, duration: 2500, delay: 2500 }));
+            textObject.color = COLORS.black;
+          } else {
+            animations.push(Animated.timing(textObject.animation, { toValue: 1, duration: 400 }));
+          }
+
         }
       }
     }
@@ -112,7 +130,6 @@ class LifeStyleScene extends Component {
   }
 
   closeInFromSidesAnimation() {
-
     const leftAnimation = [];
     const rightAnimation = [];
 
@@ -123,13 +140,26 @@ class LifeStyleScene extends Component {
         for (var x = 0; x < viewObject.length; x++) {
           const textObject = viewObject[x];
 
-          rightAnimation.push(Animated.timing(textObject.animation, { toValue: 1, duration: 400 }));
+          if (this.fadeToBlackTextAnimation(textObject.text)) {
+            rightAnimation.push(Animated.timing(textObject.animation, { toValue: 1, duration: 2500, delay: 500 }));
+            textObject.color = COLORS.black;
+          } else {
+            rightAnimation.push(Animated.timing(textObject.animation, { toValue: 1, duration: 400 }));
+          }
+
         }
       } else { //even
         for (var z = viewObject.length-1; z > -1; z--) {
           const textObject = viewObject[z];
 
-          leftAnimation.push(Animated.timing(textObject.animation, { toValue: 1, duration: 400 }));
+          if (this.fadeToBlackTextAnimation(textObject.text)) {
+            leftAnimation.push(Animated.timing(textObject.animation, { toValue: 1, duration: 2500, delay: 500 }));
+            textObject.color = COLORS.black;
+          }
+          else {
+            leftAnimation.push(Animated.timing(textObject.animation, { toValue: 1, duration: 400 }));
+          }
+          
         }
       }
     }
@@ -144,7 +174,17 @@ class LifeStyleScene extends Component {
     //and bottom in parallel we only want the for-loop to iterate half the length of the componentArray
   }
 
+  /** Convert text to black animation **/
+  fadeToBlackTextAnimation(potentialKeyword) {
+    if (this.props.textObject.keywords.includes(potentialKeyword)) {
+      console.log('Keywords matched! ' + potentialKeyword);
+      return (true);
+    } else {
+      return (false);
+    }
+  }
 
+  //Component Life Cycle
   render() {
     console.log('LifeStyle scene rendered');
     return(
