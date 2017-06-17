@@ -34,12 +34,13 @@ class LifeStyleScene extends Component {
     const array = this.props.textObject.text.slice();
 
     while (array.length > 0) {
-      console.log('is this function running?');
       var sp = array.splice(0, ELEMENTS_PER_VIEW);   
       
       const object = sp.map((value, index) => {
                       return ({
                         text: value,
+                        fontSize: 18,
+                        color: COLORS.gray,
                         animation: new Animated.Value(0)
                       });
                     });
@@ -165,7 +166,7 @@ class LifeStyleScene extends Component {
                 {this.componentArray[index].map((value, index) => {
                   return (
                     <Animated.View style={{opacity: value.animation}} key={index}>
-                      <AntroText style={{fontSize: 18, justifyContent: 'center', textAlign: 'center'}}>{value.text}</AntroText>
+                      <AntroText style={{fontSize: value.fontSize, color: value.color, justifyContent: 'center', textAlign: 'center'}}>{value.text}</AntroText>
                     </Animated.View>
                     );
                 })}
