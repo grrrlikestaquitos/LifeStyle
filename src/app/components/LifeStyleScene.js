@@ -15,7 +15,7 @@ const { width } = Dimensions.get('window');
 
 const propTypes = {
   navigator: PropTypes.object.isRequired,
-  textArray: PropTypes.array.isRequired
+  textObject: PropTypes.object.isRequired
 };
 
 const ELEMENTS_PER_VIEW = 5;
@@ -31,7 +31,7 @@ class LifeStyleScene extends Component {
   }
 
   createTextArray() {
-    const array = this.props.textArray.slice();
+    const array = this.props.textObject.text.slice();
 
     while (array.length > 0) {
       console.log('is this function running?');

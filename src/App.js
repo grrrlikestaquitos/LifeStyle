@@ -142,7 +142,7 @@ class App extends Component {
 
                             case 2:
                                 return (<LifeStyleScene navigator={navigator}
-                                                        textArray={this.props.app.selectedPlaceArray}/>);
+                                                        textObject={this.props.app.selectedPlaceObject}/>);
                         
                         }
                         

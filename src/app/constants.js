@@ -26,7 +26,8 @@ export const INSPIRATIONAL_QUOTES = {
 };
 
 export const PLACE_TEXTS = {
-    bedroom: ['love', 'unison', 'hope', 'faith', 'selflessness', 'purity', 'forgiveness',
+    bedroom: {
+        text: ['love', 'unison', 'hope', 'faith', 'selflessness', 'purity', 'forgiveness',
               'memento', 'good', 'sunny', 'morning', 'art', 'praise', 'willingness', 'passion', 
               'eternity', 'the', 'elegance', 'worship', 'wellrounded', 'open minded', 'clarity', 
               'meaning', 'compassion', 'trust', 'achievement', 'forecast', 'comprimise', 'smile',
@@ -36,6 +37,8 @@ export const PLACE_TEXTS = {
               'strength', 'will', 'zion', 'seek', 'bright', 'beautiful', 'passionate', 'everlasting',
               'insight', 'widsom', 'caring', 'treasure', 'time', 'is', 'run', 'dance', 'charm', 'abundance',
               'overflow', 'swim', 'heal', 'blue', 'teal', 'tree', 'triumph', 'life', 'serenity'],
+        keywords: ['love, blue, tree']
+            },
     restroom: ['shower', 'cleanse', 'cool', 'revitalize', 'colour', 'sing', 'anything', 'pray',
                'notice', 'purity', 'run', 'skyward', 'sweat', 'shine', 'moisturize', 'conditioner',
                'rinse', 'shampoo', 'body', 'mommae', 'smooth', 'believe', 'skin', 'cuticle', 'transcend',

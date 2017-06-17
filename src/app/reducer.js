@@ -4,7 +4,10 @@ import { PLACE_TEXTS } from './constants';
 export const initialState = {
     loggedIn: false,
     beaconList: [],
-    selectedPlaceArray: []
+    selectedPlaceObject: {
+      text: [],
+      keywords: [],
+    }
 };
 
 export default (state = initialState, action) => {
@@ -22,13 +25,13 @@ export default (state = initialState, action) => {
       case t.SELECTED_PLACE: {
         switch (action.payload) {
           case 'bed':
-            return { ...state, selectedPlaceArray: PLACE_TEXTS.bedroom };
+            return { ...state, selectedPlaceObject: PLACE_TEXTS.bedroom };
         
           case 'restroom':
-            return { ...state, selectedPlaceArray: PLACE_TEXTS.restroom };
+            return { ...state, selectedPlaceObject: PLACE_TEXTS.restroom };
 
           case 'workspace':
-            return { ...state, selectedPlaceArray: PLACE_TEXTS.workspace };
+            return { ...state, selectedPlaceObject: PLACE_TEXTS.workspace };
 
           default:
             break;
