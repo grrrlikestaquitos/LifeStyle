@@ -39,7 +39,7 @@ class LifeStyleScene extends Component {
       const object = sp.map((value, index) => {
                       return ({
                         text: value,
-                        fontSize: 18,
+                        fontSize: 20,
                         color: COLORS.gray,
                         animation: new Animated.Value(0)
                       });
