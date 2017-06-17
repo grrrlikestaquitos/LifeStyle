@@ -53,16 +53,19 @@ class LifeStyleScene extends Component {
     console.log('random number '+x);
     switch (x) {
       case 0:
-        return this.linearAnimation();
+        this.linearAnimation();
+        break;
     
       case 1:
-        return this.closeInFromSidesAnimation();
+        this.closeInFromSidesAnimation();
+        break;
       
       case 2:
-        return this.zigzagAnimation();
+        this.zigzagAnimation();
+        break;
 
       default:
-        return this.linearAnimation();
+        break;
     }
   }
 
