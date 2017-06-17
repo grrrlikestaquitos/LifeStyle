@@ -38,8 +38,9 @@ export const PLACE_TEXTS = {
               'insight', 'widsom', 'caring', 'treasure', 'time', 'is', 'run', 'dance', 'charm', 'abundance',
               'overflow', 'swim', 'heal', 'blue', 'teal', 'tree', 'triumph', 'life', 'serenity'],
         keywords: ['love, blue, tree']
-            },
-    restroom: ['shower', 'cleanse', 'cool', 'revitalize', 'colour', 'sing', 'anything', 'pray',
+    },
+    restroom: {
+        text:  ['shower', 'cleanse', 'cool', 'revitalize', 'colour', 'sing', 'anything', 'pray',
                'notice', 'purity', 'run', 'skyward', 'sweat', 'shine', 'moisturize', 'conditioner',
                'rinse', 'shampoo', 'body', 'mommae', 'smooth', 'believe', 'skin', 'cuticle', 'transcend',
                'girly', 'pretty', 'feel', 'beautiful', 'rinse', 'bathe', 'ocean', 'dream', 'breeze',
@@ -47,14 +48,19 @@ export const PLACE_TEXTS = {
                'wash', 'know', 'water', 'droplets', 'cry', 'earth', 'rejoice', 'bottle', 'once', 'find',
                'synergy', 'drive', 'lungs', 'sink', 'discover', 'splash', 'wake up', 'sleep', 'calm down',
                'best', 'amazing', 'honest', 'chasing', 'stay', 'change', 'symphony', 'fantasy', 'spirit'],
-    workspace: ['if', 'statement', 'conditional', 'optionals', 'swift', 'code', 'learn', 'type', 'bug',
+        keywords: ['feel', 'beautiful', 'honest']
+    },
+    workspace: {
+        text:   ['if', 'statement', 'conditional', 'optionals', 'swift', 'code', 'learn', 'type', 'bug',
                 'objects', 'javascript', 'c#', 'wrap', 'exception', 'git', 'java', 'else', 'while',
                 'debug', 'inheritance', 'terminal', 'commit', 'state', 'data', 'loop', 'push', 'source',
                 'while', 'null', 'parse', 'ternary', 'constant', 'export', 'deconstructive', 'timing',
                 'binary', 'tree', 'indexing', 'alloc', 'init', 'memory', 'cycles', 'bits', 'execute',
                 'algorigthm', 'calculate', 'work', 'props', 'react', 'cpu', 'ios', 'android', 'coupling',
                 'practice', 'nodejs', 'resume', 'achieve', 'gesture', 'pixels', 'notation', 'document',
-                'json', 'run', 'compiler', 'quantum', 'cyborg', 'idea', 'fascinate', ]
+                'json', 'run', 'compiler', 'quantum', 'cyborg', 'idea', 'fascinate', ],
+        keywords: ['null', 'init', 'pixels']
+    }
 }
 
 export const SPLASH_IMAGES = [
