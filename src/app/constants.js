@@ -37,7 +37,7 @@ export const PLACE_TEXTS = {
               'strength', 'will', 'zion', 'seek', 'bright', 'beautiful', 'passionate', 'everlasting',
               'insight', 'widsom', 'caring', 'treasure', 'time', 'is', 'run', 'dance', 'charm', 'abundance',
               'overflow', 'swim', 'heal', 'blue', 'teal', 'tree', 'triumph', 'life', 'serenity'],
-        keywords: ['love, blue, tree']
+        keywords: ['love', 'blue', 'tree']
     },
     restroom: {
         text:  ['shower', 'cleanse', 'cool', 'revitalize', 'colour', 'sing', 'anything', 'pray',
